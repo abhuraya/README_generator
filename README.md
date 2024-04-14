@@ -1,7 +1,7 @@
 # README_generator
 
 ## Desctription
-- This file will create a professional README file using input from users
+- This will create a professional README file using input from users
 
 ## Table of Contents
 - Installation
@@ -22,4 +22,4 @@
 
 ## Contributers
 - https://abhuraya.github.io/README_generator/
-- <video controls src="Assets/README Generator demo.mp4" title="README Generator demo"></video>
+- <video controls src="Assets/README Generator Demo.mp4" title="README Generator Demo"></video>

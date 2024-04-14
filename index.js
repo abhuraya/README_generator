@@ -1,7 +1,9 @@
+//inquirer and fs module variables
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-const generateREADME = ({ name, description, tableofcontents, installation, usage, licence, contributing, tests, github, email, questions}) =>
+//function to fill content of README file
+const generateREADME = ({ name, description, installation, usage, licence, contributing, tests, github, email, questions}) =>
   `## ${name}
 
   ## Description
@@ -34,6 +36,7 @@ const generateREADME = ({ name, description, tableofcontents, installation, usag
     - Github repo: github.com/${github}
     - Email: ${email}`;
 
+//question prompts to accept user input
 inquirer
   .prompt([
     {
@@ -54,16 +57,13 @@ inquirer
     {
       type: 'input',
       name: 'usage',
-      message: 'Explain how will the software be used?',
+      message: 'Explain how the software will be used?',
     },
     {
       type: 'list',
       name: 'licence',
       message: 'What type of licence will the software have?',
-      choices: ['MIT', 'Stanford'],
-      filter(val){
-        return val.toLowerCase();
-      },
+      choices: ['MIT', 'Stanford']
     },
     {
         type: 'input',
@@ -84,18 +84,15 @@ inquirer
       type: 'input',
       name: 'tests',
       message: 'Enter test methods',
-    },
-    {
-        type: 'input',
-        name: 'questions',
-        message: 'Random stuff',
-    },
+    }
   ])
+
+  
   .then((answers) => {
     console.log(answers);
     const readmePageContent = generateREADME(answers);
-
-    fs.writeFile('README.md', readmePageContent, (x) =>
-      x ? console.log(x) : console.log('Successfully created README.md!')
+//function to create README file
+    fs.writeFile('README.md', readmePageContent, (err) =>
+      err ? console.log(err) : console.log('Successfully created README.md!')
     );
   });
